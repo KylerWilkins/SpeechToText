@@ -1,7 +1,8 @@
 SpeechToText
 ============
 
-"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome. It localizes the following languages:
+"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome. 
+It localizes the following languages:
 * english (default)
 * spanish
 * catalan
