@@ -7,6 +7,7 @@ Usage:
 Add the folder "SpeechToText" to your Project.
 
 Example:
+```objective-c
 //On your header...
 #import "SpeechToTextModule.h"
 @property (nonatomic, strong) SpeechToTextModule *speech;
@@ -35,3 +36,4 @@ self.speech  = [[SpeechToTextModule alloc] initWithLocaleCode:SpeechToTextLocale
 {
     NSLog(@"STOP");
 }
+```
