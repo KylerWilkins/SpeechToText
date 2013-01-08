@@ -1,7 +1,9 @@
 SpeechToText
 ============
 
-"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome: https://github.com/kronik/ZhiShi/tree/master/src/iPhone-Speech-To-Text 
+"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome that adds more languages and a non-GUI version.
+
+https://github.com/kronik/ZhiShi/tree/master/src/iPhone-Speech-To-Text 
 
 ##Suported languages
 * english (default): SpeechToTextLocaleEnglish
@@ -28,19 +30,31 @@ Add the following Frameworks:
 ```
 
 ### On your .m file:
+Ini SpeechToTextModule:
 ```objective-c
-//Ini class:
-self.speech  = [[SpeechToTextModule alloc] initWithLocaleCode:SpeechToTextLocaleSpanish];
-        [self.speech setDelegate:self];
+self.speech  = [[SpeechToTextModule alloc] initWithLocale:SpeechToTextLocaleSpanish];
+[self.speech setDelegate:self];
+```
 
-//(...)
+For the non-GUI version you must use:
+```objective-c
+self.speech = [[SpeechToTextModule alloc] initWithNoGUIAndLocale:SpeechToTextLocaleSpanish];
+[self.speech setDelegate:self];
+```
 
-- (IBAction)push:(id)sender
-{
-    [self.speech beginRecording];
-}
+To start recording:
+```objective-c
+[self.speech beginRecording];
+```
 
-#pragma mark - Voice delegate
+To end recording:
+```objective-c
+[self.speech stopRecording:YES];
+```
+
+Delegates
+```objective-c
+```
 - (void)didRecognizeResponse:(NSString *)recognizedText
 {
     NSLog(@"%@", recognizedText);
@@ -55,4 +69,4 @@ self.speech  = [[SpeechToTextModule alloc] initWithLocaleCode:SpeechToTextLocale
 }
 ```
 
-See Stand Alone Demo for a example of the library
+See the demos for a live example of the library

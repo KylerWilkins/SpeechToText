@@ -17,15 +17,15 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test/TestViewController.h"
-         timestampString = "379352385.725159"
+         timestampString = "379349585.695607"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
+         startingLineNumber = "22"
+         endingLineNumber = "22"
          landmarkName = "@interface TestViewController"
          landmarkType = "2">
       </FileBreakpoint>

@@ -13,9 +13,8 @@
 @property (nonatomic, strong) SpeechToTextModule *speech;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnRec;
-
 @property (strong, nonatomic) IBOutlet UITextView *texto;
-
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 - (IBAction)push:(id)sender;
 - (IBAction)pop:(id)sender;

@@ -20,9 +20,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.speech  = [[SpeechToTextModule alloc] initWithLocale:SpeechToTextLocaleSpanish];
+        self.speech = [[SpeechToTextModule alloc] initWithNoGUIAndLocale:SpeechToTextLocaleSpanish];
         [self.speech setDelegate:self];
-        
     }
     return self;
 }
@@ -35,6 +34,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self.texto setText:nil];
     
+    [self.btnRec setTitle:@"Mantener pulsado para hablar" forState:UIControlStateNormal];
+    [self.btnRec setTitle:@"Soltar para dejar de hablar" forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,23 +44,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload
-{
-    
-    [self setTexto:nil];
-    [super viewDidUnload];
-}
-- (IBAction)push:(id)sender
-{
-    [self.texto setText:nil];
-    [self.speech beginRecording];
-}
 
 
 #pragma mark - Voice delegate
 - (void)didRecognizeResponse:(NSString *)recognizedText
 {
     NSLog(@"%@", recognizedText);
+    [self.activityIndicator stopAnimating];
     [self.texto setText:recognizedText];
 }
 - (void)speechStartRecording
@@ -71,6 +62,25 @@
     NSLog(@"STOP");
 }
 
+- (void)viewDidUnload
+{
+
+    [self setTexto:nil];
+    [self setActivityIndicator:nil];
+    [super viewDidUnload];
+}
+- (IBAction)push:(id)sender
+{
+    [self.texto setText:nil];
+    [self.speech beginRecording];
+    
+}
+
+- (IBAction)pop:(id)sender
+{
+    [self.speech stopRecording:YES];
+    [self.activityIndicator startAnimating];
+}
 
 
 @end

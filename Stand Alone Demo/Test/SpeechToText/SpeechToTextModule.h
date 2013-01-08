@@ -61,9 +61,12 @@ typedef enum
     
     NSThread *processingThread;
     NSString *customLocale;
+    BOOL _useUserInterface;
+    SpeechToTextLocale _locale;
 
 }
-
+@property (assign) SpeechToTextLocale locale;
+@property (assign) BOOL useUserInterface;
 @property (readonly) BOOL recording;
 @property (assign) id<SpeechToTextModuleDelegate> delegate;
 
@@ -72,8 +75,9 @@ typedef enum
  interface). A nil argument will cause the module to display an alert view instead
  of the custom view controller. */
 - (id) initWithCustomDisplay:(NSString *)nibName;
-- (id) initWithLocaleCode:(SpeechToTextLocale) viewControllerLocale;
-- (id) initWithLocale: (NSString*)recognitionLocale __attribute__ ((deprecated));
+- (id) initWithLocale:(SpeechToTextLocale) locale;
+- (id) initWithNoGUIAndLocale:(SpeechToTextLocale) locale;
+
 
 // Begins a voice recording
 - (void)beginRecording;

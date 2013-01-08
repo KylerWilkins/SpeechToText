@@ -12,7 +12,6 @@
 #import "UIWaveAlertView.h"
 #import "UIProgressAlertView.h"
 
-
 #define kNumberBuffers 3
 #define kNumVolumeSamples 10
 #define kSilenceThresholdDB -30.0
@@ -24,16 +23,6 @@
 // For scaling display
 #define kMinVolumeSampleValue 0.01
 #define kMaxVolumeSampleValue 1.0
-
-typedef enum
-{
-    SpeechToTextLocaleDefault,
-    SpeechToTextLocaleEnglish,
-    SpeechToTextLocaleSpanish,
-    SpeechToTextLocaleCatalan,
-    SpeechToTextLocaleRussian,
-    SpeechToTextLocaleFrench
-} SpeechToTextLocale;
 
 @protocol SpeechToTextModuleDelegate <NSObject>
 
@@ -61,12 +50,8 @@ typedef enum
     
     NSThread *processingThread;
     NSString *customLocale;
-    BOOL _useUserInterface;
-    SpeechToTextLocale _locale;
-
 }
-@property (assign) SpeechToTextLocale locale;
-@property (assign) BOOL useUserInterface;
+
 @property (readonly) BOOL recording;
 @property (assign) id<SpeechToTextModuleDelegate> delegate;
 
@@ -74,10 +59,8 @@ typedef enum
  a SineWaveViewController (nib should conform to the spec in the SineWaveViewController
  interface). A nil argument will cause the module to display an alert view instead
  of the custom view controller. */
-- (id) initWithCustomDisplay:(NSString *)nibName;
-- (id) initWithLocale:(SpeechToTextLocale) locale;
-- (id) initWithNoGUIAndLocale:(SpeechToTextLocale) locale;
-
+- (id)initWithCustomDisplay:(NSString *)nibName;
+- (id)initWithLocale: (NSString*)recognitionLocale;
 
 // Begins a voice recording
 - (void)beginRecording;
