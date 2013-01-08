@@ -23,9 +23,9 @@ Add the following Frameworks:
 ##Example
 
 ### On your .h file:
+Add UIGestureRecognizerDelegate to your @interface
 ```objective-c
 #import "SpeechToTextModule.h"
-//Add UIGestureRecognizerDelegate to your @interface
 @property (nonatomic, strong) SpeechToTextModule *speech;
 ```
 
@@ -54,7 +54,6 @@ To end recording:
 
 Delegates
 ```objective-c
-```
 - (void)didRecognizeResponse:(NSString *)recognizedText
 {
     NSLog(@"%@", recognizedText);
