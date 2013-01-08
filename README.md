@@ -30,7 +30,7 @@ Add the following Frameworks:
 ```
 
 ### On your .m file:
-Ini SpeechToTextModule:
+Initialize SpeechToTextModule:
 ```objective-c
 self.speech  = [[SpeechToTextModule alloc] initWithLocale:SpeechToTextLocaleSpanish];
 [self.speech setDelegate:self];
