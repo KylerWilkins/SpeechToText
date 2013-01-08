@@ -23,6 +23,7 @@ Add the following Frameworks:
 ### On your .h file:
 ```objective-c
 #import "SpeechToTextModule.h"
+//Add UIGestureRecognizerDelegate to your @interface
 @property (nonatomic, strong) SpeechToTextModule *speech;
 ```
 
