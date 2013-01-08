@@ -3,10 +3,10 @@ SpeechToText
 
 "Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome
 
-Usage:
+###Setup
 Add the folder "SpeechToText" to your Project.
 
-Example:
+###Example
 ```objective-c
 //On your header...
 #import "SpeechToTextModule.h"
