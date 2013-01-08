@@ -1,7 +1,7 @@
 SpeechToText
 ============
 
-"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome: https://github.com/iz3/ZhiShi/tree/master/src/iPhone-Speech-To-Text 
+"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome: https://github.com/kronik/ZhiShi/tree/master/src/iPhone-Speech-To-Text 
 
 ##Suported languages
 * english (default): SpeechToTextLocaleEnglish
