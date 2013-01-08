@@ -8,15 +8,20 @@ SpeechToText
 * french
 * russian (ZhiShi's project old default)
 
-###Setup
-Add the folder "SpeechToText" to your Project.
+##Setup
+* Add the folder "SpeechToText" to your Project.
+* Import SpeechToTextModule.h on your code
 
-###Example
+##Example
+
+### On your .h file:
 ```objective-c
-//On your header...
 #import "SpeechToTextModule.h"
 @property (nonatomic, strong) SpeechToTextModule *speech;
+```
 
+### On your .m file:
+```objective-c
 //Ini class:
 self.speech  = [[SpeechToTextModule alloc] initWithLocaleCode:SpeechToTextLocaleSpanish];
         [self.speech setDelegate:self];
