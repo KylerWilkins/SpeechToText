@@ -73,7 +73,9 @@ See the demos for a live example of the library
 ##ToDo
 ###Force Language
 Add property to force to a non supported language (without GUI) by using one of the following list:
+
 http://msdn.microsoft.com/es-es/library/system.globalization.cultureinfo(v=vs.80).aspx
+
 
 ###Wave form delegate
 A delegate with a wave's UIImage
