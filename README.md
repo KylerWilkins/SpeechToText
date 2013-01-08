@@ -2,7 +2,8 @@ SpeechToText
 ============
 
 "Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome. 
-It localizes the following languages:
+
+##Suported languages
 * english (default)
 * spanish
 * catalan
@@ -12,6 +13,9 @@ It localizes the following languages:
 ##Setup
 * Add the folder "SpeechToText" to your Project.
 * Import SpeechToTextModule.h on your code
+* Add the following Frameworks:
+** AVFoundation.framework
+** AudioToolbox.framework
 
 ##Example
 
@@ -48,3 +52,5 @@ self.speech  = [[SpeechToTextModule alloc] initWithLocaleCode:SpeechToTextLocale
     NSLog(@"STOP");
 }
 ```
+
+See Stand Alone Demo for a example of the library
