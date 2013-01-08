@@ -13,9 +13,10 @@ SpeechToText
 ##Setup
 * Add the folder "SpeechToText" to your Project.
 * Import SpeechToTextModule.h on your code
+
 Add the following Frameworks:
-** AVFoundation.framework
-** AudioToolbox.framework
+* AVFoundation.framework
+* AudioToolbox.framework
 
 ##Example
 
