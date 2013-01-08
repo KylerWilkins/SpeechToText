@@ -1,14 +1,14 @@
 SpeechToText
 ============
 
-"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome. 
+"Fork" of kronik / ZhiShi's iPhone-Speech-To-Text library to access Google's Speech for Chrome: https://github.com/iz3/ZhiShi/tree/master/src/iPhone-Speech-To-Text 
 
 ##Suported languages
-* english (default)
-* spanish
-* catalan
-* french
-* russian (ZhiShi's project old default)
+* english (default): SpeechToTextLocaleEnglish
+* spanish: SpeechToTextLocaleSpanish
+* catalan: SpeechToTextLocaleCatalan
+* french: SpeechToTextLocaleFrench
+* russian (ZhiShi's project old default): SpeechToTextLocaleRussian
 
 ##Setup
 * Add the folder "SpeechToText" to your Project.
