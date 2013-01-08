@@ -71,4 +71,7 @@ Delegates
 See the demos for a live example of the library
 
 ##ToDo
-* Add property to force to a non supported language (without GUI)
+###Force Language
+Add property to force to a non supported language (without GUI)
+###Wave form delegate
+A delegate with a wave's UIImage
