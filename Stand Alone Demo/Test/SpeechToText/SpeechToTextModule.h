@@ -25,15 +25,13 @@
 #define kMinVolumeSampleValue 0.01
 #define kMaxVolumeSampleValue 1.0
 
-typedef enum
-{
-    SpeechToTextLocaleDefault,
-    SpeechToTextLocaleEnglish,
-    SpeechToTextLocaleSpanish,
-    SpeechToTextLocaleCatalan,
-    SpeechToTextLocaleRussian,
-    SpeechToTextLocaleFrench
-} SpeechToTextLocale;
+//Predefined Languages
+// For a list of language codes, visit http://msdn.microsoft.com/es-es/library/system.globalization.cultureinfo(v=vs.80).aspx
+#define kLANG_SPANISH @"es-ES"
+#define kLANG_CATALAN @"ca-ES"
+#define kLANG_FRENCH @"fr"
+#define kLANG_ENGLISH @"en-US" //default lang
+
 
 @protocol SpeechToTextModuleDelegate <NSObject>
 
@@ -62,10 +60,11 @@ typedef enum
     NSThread *processingThread;
     NSString *customLocale;
     BOOL _useUserInterface;
-    SpeechToTextLocale _locale;
+    NSString *_locale;
 
 }
-@property (assign) SpeechToTextLocale locale;
+
+@property (assign) NSString *locale;
 @property (assign) BOOL useUserInterface;
 @property (readonly) BOOL recording;
 @property (assign) id<SpeechToTextModuleDelegate> delegate;
@@ -75,8 +74,8 @@ typedef enum
  interface). A nil argument will cause the module to display an alert view instead
  of the custom view controller. */
 - (id) initWithCustomDisplay:(NSString *)nibName;
-- (id) initWithLocale:(SpeechToTextLocale) locale;
-- (id) initWithNoGUIAndLocale:(SpeechToTextLocale) locale;
+- (id) initWithLocale:(NSString *) locale;
+- (id) initWithNoGUIAndLocale:(NSString *) locale;
 
 
 // Begins a voice recording

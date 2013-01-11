@@ -5,14 +5,20 @@ SpeechToText
 
 https://github.com/kronik/ZhiShi/tree/master/src/iPhone-Speech-To-Text 
 
+#Locale
 ##Suported languages
-* english (default): SpeechToTextLocaleEnglish
-* spanish: SpeechToTextLocaleSpanish
-* catalan: SpeechToTextLocaleCatalan
-* french: SpeechToTextLocaleFrench
-* russian (ZhiShi's project old default): SpeechToTextLocaleRussian
+* kLANG_SPANISH @"es-ES"
+* kLANG_CATALAN @"ca-ES"
+* kLANG_FRENCH @"fr"
+* kLANG_ENGLISH @"en-US" (default language)
 
-##Setup
+##Unsuported language
+You can use the non-GUI init for unsoported version using a language code from this list: http://msdn.microsoft.com/es-es/library/system.globalization.cultureinfo(v=vs.80).aspx
+
+If you want to use the GUI inits with unsopported laguage, add the changes on both SpeechToTextModule .m and .h and recompile the library.
+
+
+#Setup
 * Add the folder "SpeechToText" to your Project.
 * Import SpeechToTextModule.h on your code
 
@@ -20,7 +26,8 @@ Add the following Frameworks:
 * AVFoundation.framework
 * AudioToolbox.framework
 
-##Example
+
+#Example
 
 ### On your .h file:
 Add UIGestureRecognizerDelegate to your @interface
@@ -32,13 +39,13 @@ Add UIGestureRecognizerDelegate to your @interface
 ### On your .m file:
 Initialize SpeechToTextModule:
 ```objective-c
-self.speech  = [[SpeechToTextModule alloc] initWithLocale:SpeechToTextLocaleSpanish];
+self.speech  = [[SpeechToTextModule alloc] initWithLocale:kLANG_SPANISH];
 [self.speech setDelegate:self];
 ```
 
 For the non-GUI version you must use:
 ```objective-c
-self.speech = [[SpeechToTextModule alloc] initWithNoGUIAndLocale:SpeechToTextLocaleSpanish];
+self.speech = [[SpeechToTextModule alloc] initWithNoGUIAndLocale:kLANG_SPANISH];
 [self.speech setDelegate:self];
 ```
 
@@ -70,12 +77,6 @@ Delegates
 
 See the demos for a live example of the library
 
-##ToDo
-###Force Language
-Add property to force to a non supported language (without GUI) by using one of the following list:
-
-http://msdn.microsoft.com/es-es/library/system.globalization.cultureinfo(v=vs.80).aspx
-
-
-###Wave form delegate
+#ToDo
+##Wave form delegate
 A delegate with a wave's UIImage

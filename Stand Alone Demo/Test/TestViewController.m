@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.speech  = [[SpeechToTextModule alloc] initWithLocale:SpeechToTextLocaleSpanish];
+        self.speech  = [[SpeechToTextModule alloc] initWithLocale:kLANG_SPANISH];
         [self.speech setDelegate:self];
         
     }

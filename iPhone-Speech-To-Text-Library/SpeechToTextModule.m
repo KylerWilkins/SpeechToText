@@ -111,12 +111,12 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
         NSLog(@"Failed to set category on AVAudioSession");
     }
     
-    self.locale = SpeechToTextLocaleDefault;
+    self.locale = kLANG_ENGLISH;
     
     return self;
 }
 
-- (id) initWithLocale:(SpeechToTextLocale) locale
+- (id) initWithLocale:(NSString *) locale
 {
     if ((self = [self initWithCustomDisplay:nil]))
     {
@@ -137,7 +137,7 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
     return self;
 }
 
-- (id) initWithNoGUIAndLocale:(SpeechToTextLocale) locale
+- (id) initWithNoGUIAndLocale:(NSString *) locale
 {
     self = [self initWithLocale:locale];
     if(self)
@@ -148,33 +148,6 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
 }
 
 
-
-//- (id)initWithLocale: (NSString*)recognitionLocale
-//{
-//    if ((self = [self initWithCustomDisplay:nil])) 
-//    {
-//        //
-//    }
-//    
-//    customLocale = recognitionLocale;
-//    
-//    AVAudioSession *session = [AVAudioSession sharedInstance];
-//    NSError *error;
-//    
-////    [session setCategory: AVAudioSessionCategoryPlayAndRecord error: &error];
-////    if (error != nil)
-////    {
-////        NSLog(@"Failed to set category on AVAudioSession");
-////    }
-//    
-//    BOOL active = [session setActive: YES error: nil];
-//    if (!active)
-//    {
-//        NSLog(@"Failed to set category on AVAudioSession");
-//    }
-//    
-//    return self;    
-//}
 
 - (id)initWithCustomDisplay:(NSString *)nibName {
     if ((self = [super init])) {
@@ -202,7 +175,7 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
         [self reset];
         aqData.selfRef = self;
         self.useUserInterface = YES;
-        self.locale = SpeechToTextLocaleDefault;
+        self.locale = kLANG_ENGLISH;
     }
     return self;
 }
@@ -297,31 +270,25 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
             if (self.useUserInterface)
             {
             
-                switch (self.locale)
+                if ([self.locale isEqualToString:kLANG_SPANISH])
                 {
-                    case SpeechToTextLocaleRussian:
-                        waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Слушаю..." delegate:self cancelButtonTitle:@"Готово" otherButtonTitles:nil];
-                        break;
-                        
-                    case SpeechToTextLocaleSpanish:
-                        waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Escuchando..." delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
-                        break;
-                        
-                    case SpeechToTextLocaleCatalan:
-                        waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Escoltant..." delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
-                        break;
-                        
-                    case SpeechToTextLocaleFrench:
-                        waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Écoute..." delegate:self cancelButtonTitle:@"Accepter" otherButtonTitles:nil];
-                        break;
-                        
-                    case SpeechToTextLocaleEnglish:
-                    case SpeechToTextLocaleDefault:
-                    default:
-                        waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Speak now..." delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
-                        
-                        break;
+                    waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Escuchando..." delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
                 }
+                else
+                    if ([self.locale isEqualToString:kLANG_FRENCH])
+                    {
+                        waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Écoute..." delegate:self cancelButtonTitle:@"Accepter" otherButtonTitles:nil];
+                    }
+                    else
+                        if ([self.locale isEqualToString:kLANG_CATALAN])
+                        {
+                            waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Escoltant..." delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                        }
+                        else
+                        {
+                            waveAlert = [[UIWaveAlertView alloc] initWithTitle:@"Speak now..." delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
+                        }
+            
                 
                 waveAlert.dataPoints = volumeDataPoints;
                 
@@ -387,35 +354,25 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
                 
                 if (self.useUserInterface)
                 {
-                    switch (self.locale)
+                    if ([self.locale isEqualToString:kLANG_SPANISH])
                     {
-                        case SpeechToTextLocaleRussian:
-                            progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Обработка..." delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:nil];
-                            break;
-                            
-                            
-                        case SpeechToTextLocaleSpanish:
-                            progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Enviando..." delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:nil];
-                            break;
-                            
-                        case SpeechToTextLocaleCatalan:
-                            progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Enviant..." delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:nil];
-                            break;
-                            
-                        case SpeechToTextLocaleFrench:
-                            
-                            progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Envoi en cours..." delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:nil];
-                            break;
-                            
-                        case SpeechToTextLocaleEnglish:
-                        case SpeechToTextLocaleDefault:
-                        default:
-                            
-                            progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Loading..." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-                            
-                            break;
+                        progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Enviando..." delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:nil];
                     }
-                    
+                    else
+                        if ([self.locale isEqualToString:kLANG_FRENCH])
+                        {
+                            progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Envoi en cours..." delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:nil];
+                        }
+                        else
+                            if ([self.locale isEqualToString:kLANG_CATALAN])
+                            {
+                                progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Enviant..." delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:nil];
+                            }
+                            else
+                            {
+                                progressAlert = [[UIProgressAlertView alloc] initWithTitle:@"Loading..." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                            }
+                                        
                     
                     [progressAlert show];
                 }
@@ -459,43 +416,11 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
     }
 }
 
-- (NSString *) googleLocaleFromSpeechToTextLocale:(SpeechToTextLocale) localizacion
-{
-    NSString *retorno;
-    
-    switch (self.locale)
-    {            
-        case SpeechToTextLocaleSpanish:
-            retorno = @"es-ES";
-            break;
-            
-        case SpeechToTextLocaleCatalan:
-            retorno = @"ca-ES";
-            break;
-            
-        case SpeechToTextLocaleFrench:
-            
-            retorno = @"fr";
-            break;
-            
-        case SpeechToTextLocaleRussian:
-            retorno = @"ru";
-            break;
-            
-        case SpeechToTextLocaleEnglish:
-        case SpeechToTextLocaleDefault:
-        default:
-            retorno = @"en-US";
-            break;
-    }
-    
-    return retorno;
-}
 
 - (void)postByteData:(NSData *)byteData
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=%@", [self googleLocaleFromSpeechToTextLocale:self.locale]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=%@", self.locale]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:byteData];
